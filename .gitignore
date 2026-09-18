@@ -4,5 +4,4 @@ __pycache__/
 .env
 .DS_Store
 tickets.db
-
 venv/

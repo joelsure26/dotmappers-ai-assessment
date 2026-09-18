@@ -1,9 +1,0 @@
-<!doctype html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DOTMappers AI Support Analytics</title>
-<style>body{font-family:Arial,sans-serif;max-width:1000px;margin:40px auto;padding:0 18px;background:#f6f7fb;color:#202124}.card{background:white;padding:24px;border-radius:14px;box-shadow:0 2px 12px #0001;margin-bottom:20px}input{width:75%;padding:12px;border:1px solid #ddd;border-radius:8px;font-size:16px}button{padding:12px 18px;border:0;border-radius:8px;cursor:pointer;margin-left:6px}pre{white-space:pre-wrap;background:#f2f3f5;padding:14px;border-radius:8px}.examples button{margin:5px 5px 5px 0}</style></head>
-<body><h1>🤖 AI Support Analytics</h1><div class="card"><p>Ask a natural-language question about the 500 support tickets.</p>
-<input id="q" placeholder="How many tickets are currently open?"><button onclick="ask()">Ask</button>
-<div class="examples"><button onclick="setQ('How many tickets are currently open?')">Open tickets</button><button onclick="setQ('Which agent resolved the most tickets?')">Top agent</button><button onclick="setQ('What is the average customer rating for Technical category tickets?')">Technical rating</button><button onclick="setQ('Show me all Critical tickets not resolved within 12 hours.')">Critical tickets</button></div></div>
-<div class="card"><button onclick="loadAnomalies()">🔎 Detect anomalies</button><pre id="out">Results will appear here.</pre></div>
-<script>function setQ(x){document.getElementById('q').value=x}async function ask(){let q=document.getElementById('q').value;let r=await fetch('/query',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q})});document.getElementById('out').textContent=JSON.stringify(await r.json(),null,2)}async function loadAnomalies(){let r=await fetch('/anomalies');document.getElementById('out').textContent=JSON.stringify(await r.json(),null,2)}</script></body></html>
